@@ -716,6 +716,148 @@
       line-height: 1.35;
     }
 
+    .toolchain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .tool-card {
+      border: 1px solid var(--vscode-border);
+      background: linear-gradient(180deg, #ffffff0f, #ffffff06);
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 160px;
+    }
+
+    .tool-card span {
+      display: block;
+      color: var(--vscode-token-green);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .tool-card p {
+      margin-top: 10px;
+      color: var(--vscode-description);
+      font-size: clamp(15px, 1.12vw, 18px);
+      line-height: 1.34;
+    }
+
+    .bench-equation {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .equation-term {
+      min-height: 190px;
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 24px;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .equation-term span {
+      color: var(--vscode-token-green);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .equation-term strong {
+      color: #fff;
+      font-size: clamp(28px, 2.7vw, 46px);
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+
+    .equation-op {
+      color: var(--vscode-description);
+      font-family: var(--mono);
+      font-size: clamp(26px, 2.8vw, 48px);
+      font-weight: 700;
+    }
+
+    .bench-visual-panel {
+      align-self: stretch;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 0;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(126, 231, 135, .10), transparent 34%),
+        rgba(12, 13, 14, .82);
+      box-shadow: 0 26px 90px rgba(0, 0, 0, .34);
+    }
+
+    .bench-visual-panel.light {
+      background: #f4f2ec;
+    }
+
+    .bench-visual-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .bench-visual-panel.report img {
+      object-fit: cover;
+      object-position: center;
+      padding: 0;
+    }
+
+    .bench-visual-caption {
+      border-top: 1px solid rgba(255, 255, 255, .10);
+      padding: 12px 16px;
+      color: var(--vscode-description);
+      background: rgba(12, 13, 14, .74);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .bench-visual-panel.light .bench-visual-caption {
+      color: #4f5352;
+      background: rgba(255, 255, 255, .68);
+      border-top-color: rgba(0, 0, 0, .08);
+    }
+
+    .bench-image-slide {
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .bench-image-slide h2 {
+      max-width: 1180px;
+      font-size: clamp(34px, 3.8vw, 64px);
+    }
+
+    .bench-image-slide .bench-visual-panel {
+      min-height: 0;
+    }
+
+    .bench-image-slide .bench-visual-panel img {
+      padding: 0;
+      object-fit: contain;
+    }
+
     .speaker-line {
       margin-top: 30px;
       display: flex;
@@ -2621,12 +2763,9 @@
                       <div class="release-card-body">
                         <strong>Agents became a parallel work surface, not just a chat mode.</strong>
                         <div class="release-items">
-                          <em>Agents window in Stable</em>
-                          <em>Remote agents over SSH/dev tunnels</em>
-                          <em>Copilot CLI remote control</em>
-                          <em>Sub-sessions</em>
-                          <em>Session hover details</em>
-                          <em>Recent-session navigation</em>
+                          <em>Agent window</em>
+                          <em>Remote agents</em>
+                          <em>Copilot CLI</em>
                         </div>
                       </div>
                     </div>
@@ -2650,7 +2789,6 @@
                         <strong>Teams got knobs for cost, latency, quality, and where models run.</strong>
                         <div class="release-items">
                           <em>BYOK for Business/Enterprise</em>
-                          <em>BYOK without GitHub sign-in</em>
                           <em>Custom endpoint provider</em>
                           <em>Provider-grouped model picker</em>
                           <em>Token usage visibility</em>
@@ -2663,12 +2801,10 @@
                       <div class="release-card-body">
                         <strong>Agent behavior became something teams could shape around their own workflows.</strong>
                         <div class="release-items">
-                          <em>Skills in dedicated context</em>
-                          <em>Copilot CLI plugins</em>
-                          <em>Plugin auto-discovery</em>
-                          <em>Workspace .mcp.json</em>
-                          <em>MCP server deduping</em>
-                          <em>Hook traces and outcomes</em>
+                          <em>Customizations window</em>
+                          <em>Skills</em>
+                          <em>Hooks</em>
+                          <em>Plugins</em>
                         </div>
                       </div>
                     </div>
@@ -2679,7 +2815,6 @@
                         <div class="release-items">
                           <em>Command risk assessment</em>
                           <em>Sandbox network modes</em>
-                          <em>Sensitive prompts stay local</em>
                           <em>OpenTelemetry traces</em>
                           <em>Grafana dashboards</em>
                           <em>Structured agent signals</em>
@@ -2772,7 +2907,7 @@
                 <h2>After 10 years of monthly releases, VS Code moved to weekly releases in February.</h2>
                 <div class="thesis-support">
                   <div>AI was moving faster than monthly releases.</div>
-                  <div>Users expected model-speed improvements.</div>
+                  <div>Model gains needed to reach users quickly.</div>
                   <div>Smaller batches were safer to ship.</div>
                 </div>
               </div>
@@ -2786,29 +2921,93 @@
                 <div class="contract-grid">
                   <div class="contract-item">
                     <span>01</span>
-                    <strong>Planning &amp; Coordination</strong>
-                    <p>Faster implementation makes prioritization, ownership, and alignment the scarce resources.</p>
+                    <strong>Inner Loop</strong>
+                    <p>Agents change the daily build, validate, debug, and performance loop inside VS Code.</p>
                   </div>
                   <div class="contract-item">
                     <span>02</span>
-                    <strong>Inner Loop</strong>
-                    <p>Agents change how engineers, PMs, and designers explore, prototype, and make decisions.</p>
+                    <strong>AI-Native Engineering Systems</strong>
+                    <p>Issue, PR, and observability systems have to keep up with AI-speed work.</p>
                   </div>
                   <div class="contract-item">
                     <span>03</span>
-                    <strong>Engineering Systems</strong>
-                    <p>More throughput requires smarter guardrails across issues, PRs, and telemetry.</p>
+                    <strong>Planning &amp; Collaboration</strong>
+                    <p>When building gets faster, alignment, DRIs, and decision loops become the scarce resource.</p>
                   </div>
                 </div>
               </div>
               <aside class="speaker-notes">This is the contract slide. Tell the audience that the product proof is done; now the talk is about the systems that made weekly AI shipping possible.</aside>
             </article>
 
-            <article class="slide cover section-divider" data-title="Planning and Collaboration">
+            <article class="slide cover section-divider" data-title="Inner Loop">
               <div>
                 <div class="section-num">section 02</div>
+                <h1>The inner loop changed from writing code to validating behavior.</h1>
+              </div>
+              <aside class="speaker-notes">Use this as a clean section break before the demo: AI did not just make implementation faster. It changed the proof loop around product behavior.</aside>
+            </article>
+
+            <article class="slide cover" data-title="Inner Loop Demo">
+              <div>
+                <div class="kicker">demo</div>
+                <h1>Demo</h1>
+              </div>
+              <aside class="speaker-notes">Pause here and jump into the live inner-loop demo.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide" data-title="VSC-Bench Harness Loop">
+              <div>
+                <div class="kicker">vsc-bench · launch loop</div>
+                <h2>Models are optimized before and after launch.</h2>
+              </div>
+              <div class="bench-visual-panel light">
+                <img src="assets/vscbench-model-launch-loop.png" alt="VSC-Bench model launch loop from model provider announcement through onboarding, harness optimization, offline evals, dogfooding, provider feedback, and model launch day">
+              </div>
+              <aside class="speaker-notes">Use this to explain that new model checkpoints do not ship by themselves. The team tunes prompts, tool interfaces, context management, and the agent loop before launch.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide" data-title="VSC-Bench Eval Lifecycle">
+              <div>
+                <div class="kicker">vsc-bench · before and after launch</div>
+                <h2>Evaluation continues after the model ships.</h2>
+              </div>
+              <div class="bench-visual-panel light">
+                <img src="assets/vscbench-eval-lifecycle.png" alt="Evaluation lifecycle showing offline evals before launch with benchmarks and dogfooding, then online experiments after launch with A/B testing and weekly reporting">
+              </div>
+              <aside class="speaker-notes">Before launch we use offline benchmarks and dogfooding. After launch we watch online experiments and weekly reporting so the harness keeps improving.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide" data-title="VSC-Bench Tradeoffs">
+              <div>
+                <div class="kicker">vsc-bench · model tradeoffs</div>
+                <h2>VSC-Bench are offline evaluations purpose built for VS Code.</h2>
+              </div>
+              <div class="bench-visual-panel light">
+                <img src="assets/vscbench-resolution-tokens.png" alt="VSC-Bench chart comparing resolution rate against median total tokens for GPT-5.4 and GPT-5.5 at low, medium, high, and xhigh reasoning levels">
+              </div>
+              <aside class="speaker-notes">Use this chart to show why launch decisions look beyond a single score. Resolution rate, token cost, and reasoning effort all matter.</aside>
+            </article>
+
+            <article class="slide cover section-divider" data-title="Engineering Systems">
+              <div>
+                <div class="section-num">section 03</div>
+                <h1>AI-native teams need an AI-native engineering system.</h1>
+              </div>
+              <aside class="speaker-notes">Use this as the section break before the engineering systems demo.</aside>
+            </article>
+
+            <article class="slide cover" data-title="Engineering System Demo">
+              <div>
+                <div class="kicker">demo</div>
+                <h1>Demo</h1>
+              </div>
+              <aside class="speaker-notes">Pause here and jump into the live engineering systems demo.</aside>
+            </article>
+
+            <article class="slide cover section-divider" data-title="Planning and Collaboration">
+              <div>
+                <div class="section-num">section 04</div>
                 <h1>When building got faster, alignment became the bottleneck.</h1>
-                <p class="lead">AI meant more human collaboration, not less: tighter workstreams, visible DRIs, and weekly decision loops.</p>
               </div>
               <aside class="speaker-notes">Start the section with the counterintuitive point: AI did not remove the need for human alignment. It made alignment more important because the team could pursue more possible work.</aside>
             </article>
@@ -2960,7 +3159,7 @@
                   </div>
                 </div>
               </div>
-              <aside class="speaker-notes">Make this the bridge to engineering systems: planning changed, but guardrails also needed to change.</aside>
+              <aside class="speaker-notes">Make this the collaboration close: faster implementation needs faster human alignment, not less of it.</aside>
             </article>
 
             <article class="slide full" data-title="Collaboration Changed">
@@ -2971,17 +3170,17 @@
                   <div class="collab-column before">
                     <div class="label">before</div>
                     <ul class="collab-list">
-                      <li><strong>Teams planned by area</strong><span>Work followed long-lived ownership boundaries.</span></li>
-                      <li><strong>Weekly planning set the frame</strong><span>A planning call plus daily team standups was enough when the work moved in longer arcs.</span></li>
-                      <li><strong>Handoffs carried context</strong><span>Product, design, and engineering could sequence decisions more cleanly.</span></li>
+                      <li><strong>Monthly planning cadence</strong><span>A monthly planning rhythm was enough when the work moved in longer arcs.</span></li>
+                      <li><strong>Traditional code ownership</strong><span>Teams formed around long-lived areas and the code they owned.</span></li>
+                      <li><strong>Meetings stayed intentionally lightweight</strong><span>Async updates and a few standups protected maker time.</span></li>
                     </ul>
                   </div>
                   <div class="collab-column after">
-                    <div class="label">now</div>
+                    <div class="label">after</div>
                     <ul class="collab-list">
-                      <li><strong>Temporary workstreams form around outcomes</strong><span>People swarm the highest-leverage AI opportunities, then reset.</span></li>
-                      <li><strong>DRIs make decisions visible</strong><span>A directly responsible individual keeps ownership clear as implementation fans out.</span></li>
-                      <li><strong>Workstreams meet daily</strong><span>Some streams needed twice-daily standups to keep decisions, validation, and release risk moving together.</span></li>
+                      <li><strong>Weekly planning cadence</strong><span>Weekly resets keep priorities aligned with the latest product, model, and user reality.</span></li>
+                      <li><strong>Workstreams around outcomes</strong><span>Temporary workstreams swarm the highest-leverage AI opportunities, then reset.</span></li>
+                      <li><strong>Meetings intentionally force alignment</strong><span>Daily — sometimes twice-daily — syncs keep decisions, validation, and release risk moving together.</span></li>
                     </ul>
                   </div>
                 </div>
@@ -2989,109 +3188,21 @@
               <aside class="speaker-notes">Land the collaboration point explicitly: AI did not reduce human coordination. It increased the premium on shared judgment, visible ownership, and faster alignment loops.</aside>
             </article>
 
-            <article class="slide full" data-title="Inner Loop">
-              <div>
-                <div class="kicker">inner loop</div>
-                <h2>AI changed how engineers, PMs, and designers explore work together.</h2>
-                <div class="role-grid">
-                  <div class="role">
-                    <div class="label">engineers</div>
-                    <strong>From implementation to judgment</strong>
-                    <p>Agents reduce mechanical effort, shifting more time toward product calls, review, and tradeoffs.</p>
-                  </div>
-                  <div class="role">
-                    <div class="label">product managers</div>
-                    <strong>Prototypes over specs</strong>
-                    <p>PMs can bring working examples into the loop, making direction easier to evaluate and refine.</p>
-                  </div>
-                  <div class="role">
-                    <div class="label">designers</div>
-                    <strong>Direct product iteration</strong>
-                    <p>Designers can test ideas closer to the product surface and contribute concrete changes sooner.</p>
-                  </div>
-                </div>
-              </div>
-              <aside class="speaker-notes">Use this as the Inner Loop section promised in the roadmap: AI changes the daily product-making loop for engineers, PMs, and designers before the talk turns to engineering systems.</aside>
-            </article>
-
-            <article class="slide full" data-title="Engineering System">
-              <div>
-                <div class="kicker">Stanza 3</div>
-                <h2>More throughput creates more risk, especially at VS Code scale.</h2>
-                <p class="lead">With 50 million users, even niche regressions can affect tens or hundreds of thousands of people.</p>
-                <div class="metric-grid">
-                  <div class="metric"><div class="value">50M</div><div class="label">users who depend on VS Code</div></div>
-                  <div class="metric"><div class="value">↑</div><div class="label">more PRs and commits entering the system</div></div>
-                  <div class="metric"><div class="value">!</div><div class="label">higher blast radius when quality slips</div></div>
-                </div>
-                <ul class="bullets">
-                  <li>The answer is not to slow down; it is to make the engineering system smarter.</li>
-                </ul>
-              </div>
-              <aside class="speaker-notes">This slide bridges from planning to engineering. Say: the process changes are necessary, but not sufficient.</aside>
-            </article>
-
-            <article class="slide full" data-title="Three Systems">
-              <div>
-                <div class="kicker">quality guardrails</div>
-                <h2>The engineering system needs intelligence at every stage.</h2>
-                <div class="triple">
-                  <div class="system-card" style="color: var(--vscode-blue)">
-                    <div class="icon">⌕</div>
-                    <h3>Issue Intelligence</h3>
-                    <p>Find the highest-signal user pain and route it to the right people faster.</p>
-                  </div>
-                  <div class="system-card" style="color: var(--vscode-green)">
-                    <div class="icon">⑂</div>
-                    <h3>PR Pipeline</h3>
-                    <p>Keep review, validation, and merge quality high as code volume increases.</p>
-                  </div>
-                  <div class="system-card" style="color: var(--vscode-yellow)">
-                    <div class="icon">◌</div>
-                    <h3>Observability</h3>
-                    <p>Detect regressions, performance issues, and adoption signals quickly after ship.</p>
-                  </div>
-                </div>
-                <p class="lead muted">Visual slot: replace with Peng visual showing the three epics.</p>
-              </div>
-              <aside class="speaker-notes">Use this as the "system architecture" slide. If Peng visual exists, place it over or instead of the three cards.</aside>
-            </article>
-
-            <article class="slide" data-title="Takeaways">
-              <div>
-                <div class="kicker">Stanza 5</div>
-                <h2>To succeed with AI, evolve the process around the tool.</h2>
-                <ul class="bullets">
-                  <li>Raise alignment frequency when implementation gets cheaper.</li>
-                  <li>Use temporary workstreams and DRIs to focus high-velocity teams.</li>
-                  <li>Invest in issue intelligence, PR pipeline, and observability as first-class product infrastructure.</li>
-                  <li>Let roles evolve toward judgment, prototypes, and direct contribution.</li>
-                </ul>
-              </div>
-              <div class="panel">
-                <div class="panel-header"><span>next-steps.md</span><span>audience playbook</span></div>
-                <div class="panel-body code"><span class="kw">1.</span> Pick one workflow where AI changed throughput.
-<span class="kw">2.</span> Identify the new bottleneck: alignment, review, or feedback.
-<span class="kw">3.</span> Add a weekly operating rhythm around it.
-<span class="kw">4.</span> Instrument quality before scaling volume.
-<span class="kw">5.</span> Redefine roles around judgment, not tasks.</div>
-              </div>
-              <aside class="speaker-notes">Give the audience something operational. This is the "what do I do Monday?" close.</aside>
-            </article>
-
-            <article class="slide cover" data-title="Close">
+            <article class="slide cover" data-title="Closing">
               <div>
                 <div class="kicker">return process.evolve()</div>
                 <h1>AI changes the work. Teams have to change how work works.</h1>
-                <p class="lead">The teams that win will not just adopt agents. They will redesign their planning, collaboration, engineering systems, and roles around the new pace of possibility.</p>
-                <div class="pill-row">
-                  <span class="pill">alignment</span>
-                  <span class="pill">weekly rhythm</span>
-                  <span class="pill">quality systems</span>
-                  <span class="pill">role evolution</span>
-                </div>
               </div>
               <aside class="speaker-notes">End crisp. Bring it back to the opening: speed is the catalyst, process is the durable advantage.</aside>
+            </article>
+
+            <article class="slide cover title-slide" data-title="Thank You">
+              <div>
+                <h1>
+                  <span class="title-line">Thank you!</span>
+                </h1>
+              </div>
+              <aside class="speaker-notes">Final thank-you slide. Leave time for questions and point people to the VS Code repo and docs.</aside>
             </article>
           </div>
         </section>
