@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pierce Boggan's Talks</title>
+  <meta name="description" content="HTML talks and decks from Pierce Boggan.">
+  <style>
+    :root {
+      --foreground: #bfbfbf;
+      --description: #8c8c8c;
+      --editor: #121314;
+      --panel: #191a1b;
+      --widget: #202122;
+      --hover: #242526;
+      --border: #2a2b2cff;
+      --blue: #57a3f8;
+      --yellow: #e0b97f;
+      --green: #86cf86;
+      --purple: #ad80d7;
+      --shadow: 0 28px 120px rgba(0, 0, 0, .58);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(57, 148, 188, .22), transparent 28%),
+        radial-gradient(circle at 90% 70%, rgba(173, 128, 215, .10), transparent 26%),
+        var(--editor);
+      color: var(--foreground);
+      font-family: var(--font);
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 86px) 0;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: clamp(52px, 9vw, 118px);
+      color: var(--description);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .brand {
+      color: var(--foreground);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .socials a,
+    .source-link {
+      color: var(--description);
+      text-decoration: none;
+      transition: color .16s ease;
+    }
+
+    .socials a:hover,
+    .socials a:focus-visible,
+    .source-link:hover,
+    .source-link:focus-visible {
+      color: var(--blue);
+      outline: none;
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+      margin-bottom: clamp(42px, 8vw, 96px);
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0;
+      color: #f2f2f2;
+      font-size: clamp(58px, 13vw, 176px);
+      line-height: .86;
+      letter-spacing: -.085em;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 0;
+      color: var(--description);
+      font-size: clamp(19px, 2vw, 26px);
+      line-height: 1.48;
+    }
+
+    .talks {
+      display: grid;
+      gap: 24px;
+    }
+
+    .talk-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: clamp(26px, 5vw, 64px);
+      overflow: hidden;
+      padding: clamp(24px, 5vw, 58px);
+      border: 1px solid rgba(57, 148, 188, .38);
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(57, 148, 188, .18), transparent 42%),
+        linear-gradient(145deg, rgba(32, 33, 34, .96), rgba(18, 19, 20, .92));
+      box-shadow: var(--shadow);
+    }
+
+    .talk-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, .04), transparent 34%),
+        radial-gradient(circle at 82% 18%, rgba(87, 163, 248, .18), transparent 17rem),
+        radial-gradient(circle at 10% 95%, rgba(173, 128, 215, .12), transparent 20rem);
+    }
+
+    .talk-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .talk-label {
+      width: fit-content;
+      margin: 0 0 20px;
+      padding: 6px 10px;
+      border: 1px solid rgba(87, 163, 248, .42);
+      border-radius: 999px;
+      background: rgba(57, 148, 188, .12);
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 760px;
+      margin: 0;
+      color: #f2f2f2;
+      font-size: clamp(34px, 6vw, 76px);
+      line-height: .93;
+      letter-spacing: -.065em;
+      text-wrap: balance;
+    }
+
+    .talk-description {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: var(--description);
+      font-size: 18px;
+      line-height: 1.62;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(18, 19, 20, .68);
+      color: var(--description);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .pill.date {
+      border-color: rgba(224, 185, 127, .45);
+      color: var(--yellow);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 17px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--widget);
+      color: var(--foreground);
+      font-weight: 800;
+      text-decoration: none;
+      transition: background .16s ease, border-color .16s ease, transform .16s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      border-color: rgba(87, 163, 248, .72);
+      background: var(--hover);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .button.primary {
+      border-color: rgba(87, 163, 248, .74);
+      background: #297aa0;
+      color: #fff;
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: #2b7da3;
+    }
+
+    .preview {
+      align-self: stretch;
+      min-height: 300px;
+      display: grid;
+      align-content: space-between;
+      overflow: hidden;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(87, 163, 248, .18), transparent 10rem),
+        var(--editor);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, .32);
+      text-decoration: none;
+    }
+
+    .preview-kicker {
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .preview-title {
+      margin-top: 14px;
+      color: #f2f2f2;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 850;
+      line-height: .95;
+      letter-spacing: -.058em;
+    }
+
+    .preview-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--description);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 34px;
+      color: var(--description);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .talk-card {
+        grid-template-columns: 1fr;
+      }
+
+      .preview {
+        max-width: 440px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 24px, 1180px);
+        padding-top: 24px;
+      }
+
+      .topbar,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .socials {
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: clamp(58px, 18vw, 96px);
+      }
+
+      .talk-card {
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-label="Pierce Boggan talks">
+    <header class="topbar">
+      <div class="brand">Pierce Boggan</div>
+      <nav class="socials" aria-label="Social links">
+        <a href="https://x.com/pierceboggan">X</a>
+        <a href="https://www.linkedin.com/in/pierceboggan/">LinkedIn</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p class="kicker">HTML talks</p>
+      <h1>Pierce Boggan's talks</h1>
+      <p class="hero-copy">A GitHub Pages home for standalone HTML talks and decks.</p>
+    </section>
+
+    <section class="talks" aria-label="Available talks">
+      <article class="talk-card">
+        <div>
+          <p class="talk-label">Featured talk</p>
+          <h2>What we learned shipping VS Code weekly (without breaking everything)</h2>
+          <p class="talk-description">A Microsoft Build deck about AI-native engineering systems, agent adoption, shipping cadence, evaluation loops, and how planning changes when building gets faster.</p>
+          <div class="meta" aria-label="Talk details">
+            <span class="pill date">June 2026</span>
+            <span class="pill">Microsoft Build</span>
+            <span class="pill">HTML deck</span>
+            <span class="pill">VS Code</span>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="build-vscode-2026-deck.html">Open talk</a>
+            <a class="button" href="https://github.com/pierceboggan/talks/blob/main/build-vscode-2026-deck.html">View source</a>
+          </div>
+        </div>
+
+        <a class="preview" href="build-vscode-2026-deck.html" aria-label="Open What we learned shipping VS Code weekly talk">
+          <div>
+            <div class="preview-kicker">Microsoft Build · June 2026</div>
+            <div class="preview-title">What we learned shipping VS Code weekly</div>
+          </div>
+          <div class="preview-meta">
+            <span>HTML deck</span>
+            <span>Open talk</span>
+          </div>
+        </a>
+      </article>
+    </section>
+
+    <footer>
+      <span>Hosted from pierceboggan/talks</span>
+      <a class="source-link" href="https://github.com/pierceboggan/talks">GitHub repository</a>
+    </footer>
+  </main>
+</body>
+</html>
