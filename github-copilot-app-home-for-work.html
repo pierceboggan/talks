@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The GitHub Copilot App: Your home for work</title>
+  <meta name="description" content="A two-slide Reveal.js deck introducing the GitHub Copilot App as your home for work.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <style>
+    :root {
+      --gh-bg: #0d1117;
+      --gh-bg-secondary: #161b22;
+      --gh-border: #30363d;
+      --gh-text: #e6edf3;
+      --gh-text-muted: #7d8590;
+      --gh-accent-blue: #4493f8;
+      --gh-accent-green: #3fb950;
+      --gh-accent-purple: #ab7df8;
+      --gh-accent-orange: #d29922;
+      --vscode-blue: #57a3f8;
+      --vscode-token-green: #7ee787;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .reveal-viewport {
+      background: var(--gh-bg);
+    }
+
+    .reveal {
+      color: var(--gh-text);
+      font-family: var(--font);
+      font-size: 32px;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides section {
+      padding: 40px 60px;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--gh-text);
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-align: left;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.8em;
+      font-weight: 800;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+    }
+
+    .reveal h3 {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+
+    .accent-green {
+      color: var(--gh-accent-green) !important;
+    }
+
+    .title-slide {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100%;
+      overflow: hidden;
+      padding: clamp(70px, 6.4vw, 104px) clamp(72px, 7vw, 118px) !important;
+      position: relative;
+      background:
+        radial-gradient(circle at 86% 20%, rgba(0, 122, 204, .22), transparent 28%),
+        radial-gradient(circle at 92% 76%, rgba(126, 231, 135, .13), transparent 24%),
+        linear-gradient(120deg, rgba(255, 255, 255, .045), transparent 34%),
+        #000;
+    }
+
+    .title-slide::before {
+      content: "";
+      position: absolute;
+      left: clamp(34px, 3.8vw, 64px);
+      top: clamp(46px, 4.2vw, 70px);
+      bottom: clamp(46px, 4.2vw, 70px);
+      width: 2px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--vscode-blue), var(--vscode-token-green));
+      opacity: .85;
+    }
+
+    .title-slide::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -170px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 46px rgba(255, 255, 255, .018),
+        0 0 120px rgba(87, 163, 248, .20);
+      opacity: .8;
+    }
+
+    .title-kicker {
+      position: relative;
+      z-index: 2;
+      margin-bottom: clamp(28px, 3vw, 46px);
+      color: var(--vscode-token-green);
+      font-family: var(--mono);
+      font-size: clamp(13px, 1vw, 16px);
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .title-slide h1 {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0;
+      color: #fff;
+      font-size: clamp(68px, 6.35vw, 108px);
+      font-weight: 650;
+      letter-spacing: -0.045em;
+      line-height: 1.03;
+    }
+
+    .title-line {
+      display: block;
+    }
+
+    .title-line.subtitle {
+      margin-top: clamp(56px, 5vw, 80px);
+      color: rgba(255, 255, 255, .92);
+      font-size: clamp(42px, 4.05vw, 66px);
+      font-weight: 560;
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    .model-capability-slide {
+      background:
+        radial-gradient(circle at 11% 30%, rgba(126, 231, 135, 0.10), transparent 24%),
+        radial-gradient(circle at 82% 52%, rgba(87, 163, 248, 0.10), transparent 34%),
+        #101112;
+    }
+
+    .model-capability-slide h2 {
+      margin-bottom: 20px;
+      color: #f2f2f2;
+      letter-spacing: -0.055em;
+    }
+
+    .visual-chart-card {
+      width: 100%;
+      min-height: 530px;
+      overflow: hidden;
+      padding: 34px 40px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(126, 231, 135, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+        #151718;
+      box-shadow:
+        0 28px 100px rgba(0, 0, 0, 0.46),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .chart-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .chart-heading h3 {
+      margin: 0;
+      color: #ededed;
+      font-size: 0.82em;
+      line-height: 1.1;
+    }
+
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #8c8c8c;
+      font-family: var(--mono);
+      font-size: 0.36em;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--swatch, var(--gh-accent-green));
+    }
+
+    .survival-chart {
+      display: grid;
+      gap: 13px;
+    }
+
+    .survival-row {
+      display: grid;
+      grid-template-columns: 190px 1fr 48px;
+      align-items: center;
+      gap: 18px;
+      color: #ededed;
+      font-family: var(--mono);
+      font-size: 0.44em;
+    }
+
+    .survival-track {
+      display: flex;
+      height: 26px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .survival-segment {
+      height: 100%;
+    }
+
+    .survival-segment.committed {
+      width: var(--commit);
+      background: linear-gradient(90deg, #14b84a, #7ee787);
+      box-shadow: 0 0 22px rgba(126, 231, 135, 0.34);
+    }
+
+    .survival-segment.edited {
+      width: var(--edit);
+      background: #9aa39d;
+    }
+
+    .survival-segment.rejected {
+      flex: 1;
+      background: #dfe6e2;
+      opacity: 0.75;
+    }
+
+    .survival-value {
+      color: #7ee787;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .survival-row.baseline .survival-value {
+      color: #ffa657;
+    }
+
+    .survival-row.baseline .survival-segment.committed {
+      background: linear-gradient(90deg, #c46d2f, #ffa657);
+    }
+
+    .reveal .progress,
+    .reveal .controls {
+      color: var(--gh-accent-blue);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="title-slide">
+        <div class="title-kicker">GitHub Copilot App</div>
+        <h1>
+          <span class="title-line">The GitHub Copilot App:</span>
+          <span class="title-line">Your home for work</span>
+          <span class="title-line subtitle">Download at gh.io/app</span>
+        </h1>
+      </section>
+
+      <section class="model-capability-slide">
+        <h2>Model capability changed <span class="accent-green">what's possible.</span></h2>
+        <div class="visual-chart-card" role="img" aria-label="Code survival by model chart showing committed, edited, and rejected generated code">
+          <div class="chart-heading">
+            <h3>Code survival by model</h3>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-swatch" style="--swatch: #7ee787;"></span>committed</span>
+              <span class="legend-item"><span class="legend-swatch" style="--swatch: #9aa39d;"></span>edited</span>
+              <span class="legend-item"><span class="legend-swatch" style="--swatch: #dfe6e2;"></span>rejected</span>
+            </div>
+          </div>
+          <div class="survival-chart">
+            <div class="survival-row" style="--commit: 76%; --edit: 18%;"><span>sonnet-4.5</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">76%</span></div>
+            <div class="survival-row" style="--commit: 86%; --edit: 11%;"><span>opus-4.6</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">86%</span></div>
+            <div class="survival-row" style="--commit: 75%; --edit: 17%;"><span>auto</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">75%</span></div>
+            <div class="survival-row" style="--commit: 78%; --edit: 14%;"><span>haiku-4.5</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">78%</span></div>
+            <div class="survival-row" style="--commit: 80%; --edit: 15%;"><span>gpt-5.3-codex</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">80%</span></div>
+            <div class="survival-row" style="--commit: 81%; --edit: 14%;"><span>opus-4.5</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">81%</span></div>
+            <div class="survival-row baseline" style="--commit: 55%; --edit: 30%;"><span>gpt-4.1</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">55%</span></div>
+            <div class="survival-row" style="--commit: 65%; --edit: 25%;"><span>gpt-5-mini</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">65%</span></div>
+            <div class="survival-row" style="--commit: 70%; --edit: 23%;"><span>sonnet-4.6</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">70%</span></div>
+            <div class="survival-row" style="--commit: 74%; --edit: 19%;"><span>gpt-5.2-codex</span><span class="survival-track"><span class="survival-segment committed"></span><span class="survival-segment edited"></span><span class="survival-segment rejected"></span></span><span class="survival-value">74%</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      center: false,
+      controls: true,
+      controlsTutorial: false,
+      progress: true,
+      history: true,
+      keyboard: true,
+      overview: true,
+      touch: true
+    });
+  </script>
+</body>
+</html>
