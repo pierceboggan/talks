@@ -839,6 +839,23 @@
       border-top-color: rgba(0, 0, 0, .08);
     }
 
+    .bench-visual-caption a {
+      color: var(--vscode-link, #4daafc);
+      text-decoration: none;
+    }
+
+    .bench-visual-caption a:hover {
+      text-decoration: underline;
+    }
+
+    .bench-image-slide.demo-shot-slide h2 {
+      font-size: clamp(26px, 2.6vw, 44px);
+    }
+
+    .demo-shot-slide .bench-visual-panel {
+      background: #0c0d0e;
+    }
+
     .bench-image-slide {
       grid-template-rows: auto minmax(0, 1fr);
       gap: 22px;
@@ -2954,6 +2971,89 @@
               </div>
               <aside class="speaker-notes">Pause here and jump into the live inner-loop demo.</aside>
             </article>
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Component Explorer">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>Agents render UI changes in the Component Explorer.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-component-explorer.jpg" alt="Agent session asking to change a button color, with the Component Explorer showing button fixtures" loading="lazy">
+                <div class="bench-visual-caption">Component Explorer (localhost:5123) · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=630s" target="_blank" rel="noopener">BRK204 @ 10:30</a></div>
+              </div>
+              <aside class="speaker-notes">Josh asks the agent to change the button color. The Component Explorer renders the component in isolation so the agent can see it.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Screenshot Validation">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>The agent screenshots its change to check the result.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-screenshot-validation.jpg" alt="Agent output confirming the Generate Instructions button is now green, with captured screenshots" loading="lazy">
+                <div class="bench-visual-caption">Component Explorer MCP server · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=690s" target="_blank" rel="noopener">BRK204 @ 11:30</a></div>
+              </div>
+              <aside class="speaker-notes">The agent takes screenshots through the Component Explorer MCP server and confirms the button changed before it calls the task done.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: PR Screenshot Diff">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>Every UI pull request carries before and after screenshots.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-pr-screenshot-diff.jpg" alt="Pull request 310881 showing screenshot changes for AI customization screens" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/pull/310881" target="_blank" rel="noopener">microsoft/vscode#310881</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=570s" target="_blank" rel="noopener">BRK204 @ 9:30</a></div>
+              </div>
+              <aside class="speaker-notes">Reviewers see the visual diff on the PR. Nobody has to pull the branch to check a UI change.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Agent Permissions">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>Agent permissions control which domains an agent can reach.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-agent-permissions.jpg" alt="Agent customizations prototype with managed, workspace, and user network rules" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://digitarald.github.io/proto-vibes-playground/prototypes/approvals-section-v4-merged-files/" target="_blank" rel="noopener">approvals prototype</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=750s" target="_blank" rel="noopener">BRK204 @ 12:30</a></div>
+              </div>
+              <aside class="speaker-notes">Managed, workspace, and user network rules. Admins set the floor and developers add trusted domains on top.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Chat Perf Skill">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>A skill teaches agents how to run chat perf tests.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-chat-perf-skill.jpg" alt="chat-perf SKILL.md in the VS Code repo with quick start commands" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/blob/main/.github/skills/chat-perf/SKILL.md" target="_blank" rel="noopener">.github/skills/chat-perf/SKILL.md</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=915s" target="_blank" rel="noopener">BRK204 @ 15:15</a></div>
+              </div>
+              <aside class="speaker-notes">The skill lives in the repo. Any agent working on chat rendering knows how to run the perf regression test.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Perfetto Trace">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>Agents query Perfetto traces to find the slow phase.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-perfetto-trace.jpg" alt="Agent session reading a Perfetto trace with SQL query results for chat performance phases" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://ui.perfetto.dev" target="_blank" rel="noopener">ui.perfetto.dev</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=951s" target="_blank" rel="noopener">BRK204 @ 15:51</a></div>
+              </div>
+              <aside class="speaker-notes">The agent loads the trace, writes the SQL, and reads out where time goes between request start and first token.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Throttling Fix">
+              <div>
+                <div class="kicker">demo · inner loop</div>
+                <h2>The trace findings shipped as a merged fix.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/inner-loop-throttling-pr.jpg" alt="Pull request 308607 adding throttling for tool stream invocations with before-fix trace summary" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/pull/308607" target="_blank" rel="noopener">microsoft/vscode#308607</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1096s" target="_blank" rel="noopener">BRK204 @ 18:16</a></div>
+              </div>
+              <aside class="speaker-notes">Before-fix traces, root cause, and the fix all live on the PR. The agent wrote most of this write-up.</aside>
+            </article>
 
             <article class="slide full bench-image-slide" data-title="VSC-Bench Harness Loop">
               <div>
@@ -3002,6 +3102,137 @@
                 <h1>Demo</h1>
               </div>
               <aside class="speaker-notes">Pause here and jump into the live engineering systems demo.</aside>
+            </article>
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: System Overview">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>One map covers every trigger, agent, and output.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-system-overview.jpg" alt="System overview diagram showing GitHub events and cron schedules flowing to agents, classifiers, and bots" loading="lazy">
+                <div class="bench-visual-caption">vscode-engineering.html (local) · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1545s" target="_blank" rel="noopener">BRK204 @ 25:45</a></div>
+              </div>
+              <aside class="speaker-notes">GitHub events and cron schedules feed dispatchers, which fan out to triage agents, classifiers, and bots.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Triage Outcomes">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Triage outcomes are tracked on a dashboard.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-triage-outcomes.jpg" alt="Triage dashboard with issues triaged, workflow success, and assignee accuracy stats" loading="lazy">
+                <div class="bench-visual-caption">Triage dashboard (internal extension) · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1680s" target="_blank" rel="noopener">BRK204 @ 28:00</a></div>
+              </div>
+              <aside class="speaker-notes">Issues triaged, workflow success rate, and how often the assignee sticks.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Triage Benchmarks">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Triage agents get benchmarked like models.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-triage-benchmarks.jpg" alt="Triage benchmark dashboard with area label, assignee, and duplicate accuracy over time" loading="lazy">
+                <div class="bench-visual-caption">Triage dashboard · benchmarks · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1769s" target="_blank" rel="noopener">BRK204 @ 29:29</a></div>
+              </div>
+              <aside class="speaker-notes">Area labels, assignees, and duplicate detection each have an accuracy number we track run over run.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Triage Agent Run">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Every triage run can be inspected step by step.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-triage-agent-run.jpg" alt="Triage agent run log showing tool calls and subagent delegation for an issue" loading="lazy">
+                <div class="bench-visual-caption">Triage dashboard · agent runs · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1815s" target="_blank" rel="noopener">BRK204 @ 30:15</a></div>
+              </div>
+              <aside class="speaker-notes">Open any run and see the tool calls, the subagents it delegated to, and the labels it picked.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Duplicate Detection">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Duplicate detection suggests matches on new issues.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-duplicate-detection.jpg" alt="Issue 319754 with a sidebar listing likely duplicate issues" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/issues/319754" target="_blank" rel="noopener">microsoft/vscode#319754</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=1905s" target="_blank" rel="noopener">BRK204 @ 31:45</a></div>
+              </div>
+              <aside class="speaker-notes">Semantic matching finds likely duplicates and lists them right on the issue.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Pipeline Health">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Pipeline health shows which automations are failing.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-pipeline-health.jpg" alt="Pipelines dashboard listing automation success rates and recent run history" loading="lazy">
+                <div class="bench-visual-caption">Triage dashboard · pipelines · <a href="https://github.com/microsoft/vscode-engineering/actions/workflows/errors-triage.lock.yml" target="_blank" rel="noopener">errors-triage workflow</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2055s" target="_blank" rel="noopener">BRK204 @ 34:15</a></div>
+              </div>
+              <aside class="speaker-notes">Each automation shows success rate, runtime, and recent history so a broken one stands out.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: VS Code Errors">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Unhandled errors from telemetry map to GitHub issues.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-vscode-errors.jpg" alt="VS Code Errors dashboard listing top unhandled errors with hit counts and linked GitHub issues" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://errors.code.visualstudio.com" target="_blank" rel="noopener">errors.code.visualstudio.com</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2095s" target="_blank" rel="noopener">BRK204 @ 34:55</a></div>
+              </div>
+              <aside class="speaker-notes">Top unhandled errors by hits and users, each linked to its GitHub issue.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Auto-filed Error">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Top errors get filed as issues automatically.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-error-issue.jpg" alt="Issue 318999 auto-created from the VS Code Errors dashboard with stack trace and details" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/issues/318999" target="_blank" rel="noopener">microsoft/vscode#318999</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2130s" target="_blank" rel="noopener">BRK204 @ 35:30</a></div>
+              </div>
+              <aside class="speaker-notes">The bot files the issue with the stack trace, version, and platform already filled in.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Error Fix PR">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>An agent finds the culprit commit and opens the fix.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-error-fix-pr.jpg" alt="Pull request 319018 from vs-code-engineering bot with root cause and culprit commit" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://github.com/microsoft/vscode/pull/319018" target="_blank" rel="noopener">microsoft/vscode#319018</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2145s" target="_blank" rel="noopener">BRK204 @ 35:45</a></div>
+              </div>
+              <aside class="speaker-notes">Root cause, culprit commit, and a recommended reviewer. A human still reviews and merges.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Release Timeline">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Release status lives in one place.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-release-timeline.jpg" alt="VS Code Tools release timeline and milestone status" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://tools.code.visualstudio.com" target="_blank" rel="noopener">tools.code.visualstudio.com</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2298s" target="_blank" rel="noopener">BRK204 @ 38:18</a></div>
+              </div>
+              <aside class="speaker-notes">Every milestone, what stage it is in, and what happens next.</aside>
+            </article>
+
+            <article class="slide full bench-image-slide demo-shot-slide" data-title="Demo: Insider Builds">
+              <div>
+                <div class="kicker">demo · engineering system</div>
+                <h2>Insider builds ship from main every few hours.</h2>
+              </div>
+              <div class="bench-visual-panel">
+                <img src="assets/build-vscode-2026/eng-insider-builds.jpg" alt="VS Code insider builds list with per-platform downloads and release actions" loading="lazy">
+                <div class="bench-visual-caption"><a href="https://builds.code.visualstudio.com/builds/insider" target="_blank" rel="noopener">builds.code.visualstudio.com/builds/insider</a> · <a href="https://www.youtube.com/watch?v=hH4RiA7pk5Q&t=2374s" target="_blank" rel="noopener">BRK204 @ 39:34</a></div>
+              </div>
+              <aside class="speaker-notes">Each insider build is listed by platform with release and rollout actions.</aside>
             </article>
 
             <article class="slide cover section-divider" data-title="Planning and Collaboration">
